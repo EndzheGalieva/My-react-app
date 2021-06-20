@@ -1,10 +1,19 @@
 import React from 'react';
 
-function Greeting() {
-    let isMorning = (new Date()).getHours() < 12;
-    return isMorning
-      ? <h3>Good Morning!</h3>
-      : <h3>Good Evening!</h3>;
-}
+export const Greeting = ({ name, numberOfMessages }) => {
+    if (!name) return null;
 
-export default Greeting;
+    let isMorning = (new Date()).getHours() < 12;
+    let greetingHeader = isMorning
+        ? <h3>Good Morning {name}!</h3>
+        : <h3>Good Evening {name}!</h3>;
+
+    return (
+        <>
+            {greetingHeader}
+            {numberOfMessages === 0
+                ? null
+                : <p>You have {numberOfMessages} new messages</p>}
+        </>
+    );
+}
