@@ -22,11 +22,13 @@ function App() {
   let adjective = 'cool';
   let url = 'https://reactjs.org';
 
+
   return (
     <div className="App">
       <header className="App-header">
         <Greeting name="Shaun" numberOfMessages={55} />
         <PeopleList people={people} />
+        <button onClick={() => alert('Hello!')}>Click Me!</button>
         <p>
           This is so {adjective}!
         </p>
