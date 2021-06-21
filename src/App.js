@@ -5,21 +5,8 @@ import { Greeting } from './Greeting';
 import { PeopleList } from './PeopleList';
 import { CounterButton } from './CounterButton';
 import './App.css';
-
-const people = [{
-  name: 'John',
-  age: 40,
-  hairColor: 'brown',
-}, {
-  name: 'Helga',
-  age: 25,
-  hairColor: 'red',
-}, {
-  name: 'Dwayne',
-  age: 55,
-  hairColor: 'blonde',
-}];
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { HomePage, CounterButtonPage, PeopleListPage } from './pages';
 
 function App() {
   const [numberOfClicks, setNumberOfClicks] = useState(0);
@@ -29,15 +16,19 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        {hideMessage
-          ? null
-          : <CongratulationsMessage
-            numberOfClicks={numberOfClicks}
-            threshold={10}
-            onHide={() => setHideMessage(true)} />}
-          <CounterButton onIncrement={increment} numberOfClicks={numberOfClicks} />
-      </header>
+      <Router>
+      <Link to="/counter">Go to Counter Page</Link>
+      <Link to="/people-list">Go to People List Page</Link>
+        <Route path="/" exact>
+           <HomePage />
+        </Route>
+        <Route path="/counter">
+           <CounterButtonPage />
+        </Route>
+        <Route path="/people-list">
+          <PeopleListPage />
+        </Route>
+      </Router>
     </div>
   );
 }
