@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import { CongratulationsMessage } from "./CongratulationsMessage";
-import { Greeting } from './Greeting';
-import { PeopleList } from './PeopleList';
-import { CounterButton } from './CounterButton';
+import React, {useState} from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { HomePage, CounterButtonPage, PeopleListPage } from './pages';
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import {CounterButtonPage, HomePage, NotFoundPage, PeopleListPage} from './pages';
 
 function App() {
   const [numberOfClicks, setNumberOfClicks] = useState(0);
@@ -17,17 +12,22 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <Link to="/counter">Go to Counter Page</Link>
-      <Link to="/people-list">Go to People List Page</Link>
-        <Route path="/" exact>
-           <HomePage />
-        </Route>
-        <Route path="/counter">
-           <CounterButtonPage />
-        </Route>
-        <Route path="/people-list">
-          <PeopleListPage />
-        </Route>
+        <Link to="/counter">Go to Counter Page</Link>
+        <Link to="/people-list">Go to People List Page</Link>
+        <Switch>
+          <Route path="/" exact>
+            <HomePage/>
+          </Route>
+          <Route path="/counter">
+            <CounterButtonPage/>
+          </Route>
+          <Route path="/people-list">
+            <PeopleListPage/>
+          </Route>
+          <Route>
+            <NotFoundPage/>
+          </Route>
+        </Switch>
       </Router>
     </div>
   );
