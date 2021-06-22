@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
-import {CounterButtonPage, HomePage, NotFoundPage, PeopleListPage, ProtectedPage } from './pages';
+import {
+  CounterButtonPage,
+  HomePage,
+  NotFoundPage,
+  PeopleListPage,
+  ProtectedPage,
+  ControlledFormPage,
+  UncontrolledFormPage
+} from './pages';
 
 function App() {
   const [numberOfClicks, setNumberOfClicks] = useState(0);
@@ -26,6 +34,12 @@ function App() {
           </Route>
           <Route path="/protected">
             <ProtectedPage />
+          </Route>
+          <Route path="/controlled">
+            <ControlledFormPage />
+          </Route>
+          <Route path="/uncontrolled">
+            <UncontrolledFormPage />
           </Route>
           <Route>
             <NotFoundPage/>
