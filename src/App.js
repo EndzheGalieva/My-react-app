@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
-import {CounterButtonPage, HomePage, NotFoundPage, PeopleListPage} from './pages';
+import {CounterButtonPage, HomePage, NotFoundPage, PeopleListPage, ProtectedPage } from './pages';
 
 function App() {
   const [numberOfClicks, setNumberOfClicks] = useState(0);
@@ -23,6 +23,9 @@ function App() {
           </Route>
           <Route path="/people-list">
             <PeopleListPage/>
+          </Route>
+          <Route path="/protected">
+            <ProtectedPage />
           </Route>
           <Route>
             <NotFoundPage/>
