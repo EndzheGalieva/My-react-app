@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import './App.css';
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import {
   CounterButtonPage,
@@ -8,8 +7,12 @@ import {
   PeopleListPage,
   ProtectedPage,
   ControlledFormPage,
-  UncontrolledFormPage
+  UncontrolledFormPage,
+  UserProfilePage,
 } from './pages';
+import { NavBar } from "./NavBar";
+import { FormsNavBar } from './FormsNavBar';
+import './App.css';
 
 function App() {
   const [numberOfClicks, setNumberOfClicks] = useState(0);
@@ -20,31 +23,41 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Link to="/counter">Go to Counter Page</Link>
-        <Link to="/people-list">Go to People List Page</Link>
-        <Switch>
-          <Route path="/" exact>
-            <HomePage/>
-          </Route>
-          <Route path="/counter">
-            <CounterButtonPage/>
-          </Route>
-          <Route path="/people-list">
-            <PeopleListPage/>
-          </Route>
-          <Route path="/protected">
-            <ProtectedPage />
-          </Route>
-          <Route path="/controlled">
-            <ControlledFormPage />
-          </Route>
-          <Route path="/uncontrolled">
-            <UncontrolledFormPage />
-          </Route>
-          <Route>
-            <NotFoundPage/>
-          </Route>
-        </Switch>
+        <NavBar />
+        <div className="App-header">
+          <Switch>
+            <Route path="/" exact>
+              <HomePage/>
+            </Route>
+            <Route path="/counter">
+              <CounterButtonPage/>
+            </Route>
+            <Route path="/people-list">
+              <PeopleListPage/>
+            </Route>
+            <Route path="/protected">
+              <ProtectedPage />
+            </Route>
+            <Route path="/user">
+              <UserProfilePage />
+            </Route>
+            <Route path="/forms">
+              <Router>
+                <FormsNavBar />
+                <Route path="/forms/controlled">
+                   <ControlledFormPage />
+                </Route>
+                <Route path="/forms/uncontrolled">
+                  <UncontrolledFormPage />
+                </Route>
+              </Router>
+            </Route>
+             <Route>
+               <NotFoundPage/>
+             </Route>
+          </Switch>
+        </div>
+
       </Router>
     </div>
   );
