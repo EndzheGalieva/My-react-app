@@ -6,6 +6,12 @@ export const ControlledFormPage = () => {
     const [email, setEmail] = useState('');
     const [favoriteColor, setFavoriteColor] = useState('');
 
+    const [state, setState] = useState({
+      name: '',
+      email: '',
+      favoriteColor: '',
+    })
+
     return (
          <form>
              <h3>Please enter your information:</h3>
