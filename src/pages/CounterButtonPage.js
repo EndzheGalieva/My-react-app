@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {useLocation} from 'react-router-dom';
-import {parse} from 'query-string';
-import {CounterButton} from "../CounterButton";
-import {CongratulationsMessage} from "../CongratulationsMessage";
-import {DisplayIf} from '../DisplayIf';
+import { useLocation } from 'react-router-dom';
+import { parse } from 'query-string';
+import { CounterButton } from "../CounterButton";
+import { CongratulationsMessage } from "../CongratulationsMessage";
+import { DisplayIf } from '../DisplayIf';
 
 export const CounterButtonPage = () => {
   const location = useLocation();
